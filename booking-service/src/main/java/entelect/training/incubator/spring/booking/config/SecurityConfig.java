@@ -1,4 +1,4 @@
-package entelect.training.incubator.spring.customer.config;
+package entelect.training.incubator.spring.booking.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     /**
-     * Disclaimer! In a production system you will never store your credentials in either clear text or in the code.
-     * It is done here so that development is both easy to understand and change.
-     * The commented code below shows you how to connect to a DB. You will also want to use some kind of password encoding/hashing.
+     * Disclaimer! In a production system you will never store your credentials in either clear text or in the code. It
+     * is done here so that development is both easy to understand and change. The commented code below shows you how to
+     * connect to a DB. You will also want to use some kind of password encoding/hashing.
      */
 
     //    @Autowired
@@ -26,7 +26,6 @@ public class SecurityConfig {
     //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     //        auth.jdbcAuthentication().dataSource(securityDataSource);
     //    }
-
     @Bean
     InMemoryUserDetailsManager inMemoryAuthManager() {
         return new InMemoryUserDetailsManager(
@@ -39,11 +38,12 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable() // !!! Disclaimer: NEVER DISABLE CSRF IN PRODUCTION !!!
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/customers/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers(HttpMethod.POST, "/customers/**").hasAnyRole("SYSTEM", "ADMIN")
+                .requestMatchers(HttpMethod.GET, "/bookings/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/bookings/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
+        http.headers().frameOptions().disable();
         return http.build();
     }
 }

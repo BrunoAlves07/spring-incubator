@@ -3,16 +3,17 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>java-spring-incubator</artifactId>
     <groupId>entelect.training.incubator</groupId>
+    <artifactId>java-spring-incubator</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>entelect.training.incubator.spring.customer</groupId>
-  <artifactId>customer-service</artifactId>
+  <groupId>entelect.training.incubator.spring.booking</groupId>
+  <artifactId>booking-service</artifactId>
 
   <dependencies>
+
     <!-- Spring dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -68,5 +69,10 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.ws</groupId>
+      <artifactId>spring-ws-core</artifactId>
+    </dependency>
   </dependencies>
+
 </project>

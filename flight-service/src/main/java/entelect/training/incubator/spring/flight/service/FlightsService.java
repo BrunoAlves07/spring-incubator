@@ -76,10 +76,12 @@ public class FlightsService {
         searchStrategies.put(SearchType.DAYS_TO_DEPARTURE_SEARCH, () -> flightRepository.findByDepartureTimeBetweenDates(
                 LocalDateTime.now(), LocalDateTime.now().plusDays(searchRequest.getDaysToDeparture()))
         );
+
         searchStrategies.put(SearchType.DEPARTURE_TIME_SEARCH, () -> flightRepository.findByDepartureTimeBetween(
                 searchRequest.getDepartureDateFrom(),
                 searchRequest.getDepartureDateTo())
         );
+
         searchStrategies.put(SearchType.ORIGIN_DESTINATION_SEARCH, () -> flightRepository.findByOriginAndDestination(
                 searchRequest.getOrigin(),
                 searchRequest.getDestination())

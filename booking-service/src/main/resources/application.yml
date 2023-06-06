@@ -1,0 +1,36 @@
+spring:
+  main:
+    allow-bean-definition-override: true
+  application:
+    name: booking-service
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+server:
+  port: 8203
+  error:
+    include-message: always
+
+customer-service:
+  server:
+    base-url: http://localhost:8201/customers
+  auth:
+    username: user
+    password: the_cake
+
+flight-service:
+  server:
+    base-url: http://localhost:8202/flights
+  auth:
+    username: user
+    password: the_cake
+
+rewards-service:
+  server:
+    base-url: http://localhost:8208/ws
